@@ -2,7 +2,13 @@ import { useState } from "react";
 import api from "../../Services";
 import FormStyled from "./style";
 
-const Form = ({ file, setFile, setResponseCnab }: any) => {
+const Form = ({
+  file,
+  setFile,
+  setResponseCnab,
+  setDepUseEffect,
+  depUseEffect,
+}: any) => {
   const [isActiveButton, setIsActiveButton] = useState(false);
   const onChangeFile = (e: any) => {
     if (e.target.files[0]) {
@@ -21,8 +27,8 @@ const Form = ({ file, setFile, setResponseCnab }: any) => {
       api
         .post("", formData)
         .then((res) => {
-          console.log(res);
-          setResponseCnab(res.data);
+          /* setResponseCnab(res.data); */
+          setDepUseEffect(!depUseEffect);
           return res;
         })
         .catch((error) => console.log(error));
@@ -33,7 +39,6 @@ const Form = ({ file, setFile, setResponseCnab }: any) => {
   return (
     <FormStyled action="" onSubmit={submitForm} encType="multipart/form-data">
       <label htmlFor="">
-        {" "}
         Selecionar arquivo
         <input type="file" onChange={onChangeFile} />
       </label>

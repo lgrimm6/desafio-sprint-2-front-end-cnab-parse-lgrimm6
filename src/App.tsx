@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import CardCnab from "./Components/CardCnab";
 import Form from "./Components/Form";
 import { v4 as uuidv4 } from "uuid";
+import api from "./Services";
 
 export interface ICnab {
   tipo: string;
@@ -18,6 +19,7 @@ function App() {
   const [file, setFile] = useState(null);
   const [responseCnab, setResponseCnab] = useState(null || []);
   const [stores, setStores] = useState(Array<string>);
+  const [depUseEffect, setDepUseEffect] = useState(false);
   const create_stores = () => {
     responseCnab.forEach((element: ICnab) => {
       if (!stores.includes(element.nome_da_loja)) {
@@ -40,6 +42,10 @@ function App() {
     return total;
   };
 
+  useEffect(() => {
+    api.get("").then((res) => setResponseCnab(res.data));
+  }, [depUseEffect]);
+
   return (
     <div className="App">
       <div className="divForm">
@@ -48,6 +54,8 @@ function App() {
           file={file}
           setFile={setFile}
           setResponseCnab={setResponseCnab}
+          depUseEffect={depUseEffect}
+          setDepUseEffect={setDepUseEffect}
         ></Form>
       </div>
       <div>
