@@ -1,0 +1,49 @@
+.App {
+  margin: 0 auto;
+  width: 70vw;
+  height: 100vh;
+}
+
+.divForm {
+  margin: 0 auto;
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divForm > h1 {
+  padding-right: 25px;
+}
+
+.ul-store {
+  display: flex;
+  flex-direction: column;
+
+  background-color: black;
+}
+
+.list-cnab {
+  width: 100%;
+  height: 75vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.div-store {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(220, 220, 220);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* .card-cnab {
+}
+ */
